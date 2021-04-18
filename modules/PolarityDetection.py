@@ -107,6 +107,16 @@ class PolarityDetection :
     def get_prediction(self,list_pred):
         result = []
         for pred in list_pred:
+            # pred = pred.tolist()
+            # result.append(pred.index(max(pred)))
+            data = np.zeros(shape=(list.shape),dtype=int)
+            data[np.where(list == np.max(list))] = 1
+            result.append(data.tolist())
+        return result
+
+    def get_prediction_inference(self,list_pred):
+        result = []
+        for pred in list_pred:
             pred = pred.tolist()
             result.append(pred.index(max(pred)))
         return result
@@ -145,7 +155,7 @@ class PolarityDetection :
         sentences = pad_sequences(sentences,padding='post',maxlen=self.maxlen)
         y_pred = self.model.predict(sentences)
         print(y_pred)
-        y_pred = self.get_prediction(y_pred)
+        y_pred = self.get_prediction_inference(y_pred)
         sentimen = []
         for y in y_pred :
             sentimen.append(INDEX2LABEL[y])

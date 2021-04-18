@@ -175,4 +175,4 @@ relation_classification = RelationClassification()
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar tidak enak',
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar sempit',
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar kotor'])
-# relation_classification.train()
+relation_classification.train()

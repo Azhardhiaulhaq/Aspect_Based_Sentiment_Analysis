@@ -163,7 +163,7 @@ class RelationClassification :
             i += 1
         print(valid_relations)
 
-relation_classification = RelationClassification()
+# relation_classification = RelationClassification()
 # relation_classification.load_model("modules/model/RelationClassification")
 # relation_classification.predict(['kamar nyaman tapi makanan tidak enak. kamar nyaman',
 #                                  'kamar nyaman tapi makanan tidak enak. kamar tidak enak',
@@ -175,4 +175,4 @@ relation_classification = RelationClassification()
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar tidak enak',
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar sempit',
 #                                  'makanan tidak enak, kamar sempit dan kotor. kamar kotor'])
-relation_classification.train()
+# relation_classification.train()

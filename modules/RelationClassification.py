@@ -33,18 +33,18 @@ class RelationClassification :
         data = data.dropna().reset_index(drop=True)
         return data
 
-    def load_model(self,filename):
+    def load_model(self, filename, tokenizer_path, encoder_path):
         self.model = tf.keras.models.load_model(filename)
-        self.tokenizer = self.load_tokenizer()
-        self.encoder = self.load_encoder()
+        self.tokenizer = self.load_tokenizer(tokenizer_path)
+        self.encoder = self.load_encoder(encoder_path)
 
-    def load_tokenizer(self):
-        with open('modules/model/tokenizer_relation.pickle', 'rb') as handle:
+    def load_tokenizer(self, tokenizer_path):
+        with open(tokenizer_path, 'rb') as handle:
             Tokenizer = pickle.load(handle)
         return Tokenizer
 
-    def load_encoder(self):
-        with open('modules/model/encoder_relation.pickle', 'rb') as handle:
+    def load_encoder(self, encoder_path):
+        with open(encoder_path, 'rb') as handle:
             Encoder = pickle.load(handle)
         return Encoder
 
@@ -166,7 +166,13 @@ class RelationClassification :
 relation_classification = RelationClassification()
 # relation_classification.load_model("modules/model/RelationClassification")
 # relation_classification.predict(['kamar nyaman tapi makanan tidak enak. kamar nyaman',
-                                #  'kamar nyaman tapi makanan tidak enak. kamar tidak enak',
-                                #  'kamar nyaman tapi makanan tidak enak. makanan nyaman',
-                                #  'kamar nyaman tapi makanan tidak enak. makanan tidak enak'])
-relation_classification.train()
+#                                  'kamar nyaman tapi makanan tidak enak. kamar tidak enak',
+#                                  'kamar nyaman tapi makanan tidak enak. makanan nyaman',
+#                                  'kamar nyaman tapi makanan tidak enak. makanan tidak enak',
+#                                  'makanan tidak enak, kamar sempit dan kotor. makanan tidak enak',
+#                                  'makanan tidak enak, kamar sempit dan kotor. makanan sempit',
+#                                  'makanan tidak enak, kamar sempit dan kotor. makanan kotor',
+#                                  'makanan tidak enak, kamar sempit dan kotor. kamar tidak enak',
+#                                  'makanan tidak enak, kamar sempit dan kotor. kamar sempit',
+#                                  'makanan tidak enak, kamar sempit dan kotor. kamar kotor'])
+# relation_classification.train()

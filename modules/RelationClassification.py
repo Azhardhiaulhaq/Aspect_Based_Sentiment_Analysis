@@ -161,7 +161,7 @@ class RelationClassification :
             if y == 1 :
                 valid_relations.append(sentences[i])
             i += 1
-        print(valid_relations)
+        return valid_relations
 
 # relation_classification = RelationClassification()
 # relation_classification.load_model("modules/model/RelationClassification")

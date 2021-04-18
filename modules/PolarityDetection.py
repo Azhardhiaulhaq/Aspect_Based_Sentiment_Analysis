@@ -145,16 +145,14 @@ class PolarityDetection :
 
     def predict(self, sentences):
         INDEX2LABEL = {0:'Negative', 1:'Neutral', 2:'Positive'}
-        print(sentences)
         sentences = self.tokenizer.texts_to_sequences(sentences)
         sentences = pad_sequences(sentences,padding='post',maxlen=self.maxlen)
         y_pred = self.model.predict(sentences)
-        print(y_pred)
         y_pred = self.get_prediction_inference(y_pred)
         sentimen = []
         for y in y_pred :
             sentimen.append(INDEX2LABEL[y])
-        print(sentimen)
+        return sentimen
 
 # polarity_detector = PolarityDetection()
 # polarity_detector.load_model("modules/model/PolarityDetection")

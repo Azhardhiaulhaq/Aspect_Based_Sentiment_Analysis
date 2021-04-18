@@ -105,14 +105,9 @@ class PolarityDetection :
         return model
 
     def get_prediction(self,list_pred):
-        result = []
-        for pred in list_pred:
-            # pred = pred.tolist()
-            # result.append(pred.index(max(pred)))
-            data = np.zeros(shape=(list.shape),dtype=int)
-            data[np.where(list == np.max(list))] = 1
-            result.append(data.tolist())
-        return result
+        data = np.zeros(shape=(list_pred.shape),dtype=int)
+        data[np.where(list_pred == np.max(list_pred))] = 1
+        return data.tolist()
 
     def get_prediction_inference(self,list_pred):
         result = []
@@ -161,7 +156,7 @@ class PolarityDetection :
             sentimen.append(INDEX2LABEL[y])
         print(sentimen)
 
-polarity_detector = PolarityDetection()
-polarity_detector.load_model("modules/model/PolarityDetection")
-polarity_detector.predict(['kamar nyaman tapi makanan tidak enak. kamar nyaman','kamar nyaman tapi makanan tidak enak. makanan tidak enak'])
+# polarity_detector = PolarityDetection()
+# polarity_detector.load_model("modules/model/PolarityDetection")
+# polarity_detector.predict(['kamar nyaman tapi makanan tidak enak. kamar nyaman','kamar nyaman tapi makanan tidak enak. makanan tidak enak'])
 # polarity_detector.train()

@@ -33,18 +33,18 @@ class PolarityDetection :
         data = data.dropna().reset_index(drop=True)
         return data
 
-    def load_model(self,filename):
-        self.model = tf.keras.models.load_model(filename)
-        self.tokenizer = self.load_tokenizer()
-        self.encoder = self.load_encoder()
+    def load_model(self,model_path,tokenizer_path,encoder_path):
+        self.model = tf.keras.models.load_model(model_path)
+        self.tokenizer = self.load_tokenizer(tokenizer_path)
+        self.encoder = self.load_encoder(encoder_path)
 
-    def load_tokenizer(self):
-        with open('modules/model/tokenizer_polarity.pickle', 'rb') as handle:
+    def load_tokenizer(self,path):
+        with open(path, 'rb') as handle:
             Tokenizer = pickle.load(handle)
         return Tokenizer
     
-    def load_encoder(self):
-        with open('modules/model/encoder_polarity.pickle', 'rb') as handle:
+    def load_encoder(self,path):
+        with open(path, 'rb') as handle:
             Encoder = pickle.load(handle)
         return Encoder
 
